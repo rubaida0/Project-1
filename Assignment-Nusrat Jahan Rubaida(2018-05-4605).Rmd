@@ -1,6 +1,6 @@
 ---
 title: "Assignment"
-author: "Shabiha Munmun"
+author: "Nusrat Jahan Rubaida"
 output:
   html_document:
     df_print: paged
