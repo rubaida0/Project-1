@@ -1,0 +1,169 @@
+---
+title: "Assignment"
+author: "Shabiha Munmun"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+#readxl is used in R to import data from Excel files efficiently
+library(readxl)
+Yield_Performance <- read_excel("D:/ict class 2/Yield Performance.xlsx")
+View(Yield_Performance)
+#This function is use for displaying data 
+```
+```{r}
+Yield_Performance$GY
+#This refers to accessing the GY column from a data frame named Yield_Performance.
+```
+
+```{r}
+Yield_Performance[5,]
+#This is used to access the fifth row of the Yield_Performance data frame
+
+```
+
+```{r}
+Yield_Performance[5,4]
+#This is used to access the value at the 5th row and 4th column of the Yield_Performance data frame.
+```
+
+```{r}
+Yield_Performance[,4]
+#This is used to access all the values in the 4th column of the Yield_Performance
+```
+
+# Title
+## Sub-title
+### Sub-sub-title
+Body
+
+```{r}
+library(ggplot2)
+#This is used to load the ggplot2 package, which is one of the most popular and powerful tools for creating advanced and customizable data visualizations. By calling this command, we are making the functions and features of the ggplot2 package.this package based on the "Grammar of Graphics," which allows you to create complex and aesthetically pleasing plots by building them layer by layer.
+```
+
+```{r}
+ggplot(Yield_Performance,aes(x=GP,y=GY, colour = Env))+
+  geom_point()
+#This code generates a scatter plot with GP on the x-axis, GY on the y-axis, and different colors for points based on the Env variable.
+```
+
+
+
+```{r}
+Yield_Performance[4,3]
+#Here Yield_Performance[4,3] accesses the value at the intersection of the 4th row and 3rd column of the Yield_Performance data frame.
+```
+
+
+
+
+
+# Scatter plot
+
+```{r}
+ggplot(Yield_Performance,aes(x=GP,y=GY,colour = Env))+geom_point()
+#This code generates a scatter plot with GP on the x-axis, GY on the y-axis, and colors the points based on the Env variable, allowing for differentiation between different environments
+```
+
+
+
+```{r}
+Yield_Performance[20,4]
+```
+
+
+
+```{r}
+ggplot(Yield_Performance,aes(x=GP,y=GY,colour = Env))+geom_point(size=4)
+#This The code generates a scatter plot with GP on the x-axis, GY on the y-axis, and colors the points based on the Env variable. The size=4 argument makes the points larger for better visibility.
+```
+
+```{r}
+ggplot(Yield_Performance,aes(x=GP,y=GY,colour = Env))+geom_point(aes(shape =factor(Env)))
+#This code generates a scatter plot with GP on the x-axis, GY on the y-axis, and points colored and shaped according to the Env variable. This enhances the visualization by allowing differentiation based on both color and shape.
+```
+
+
+```{r}
+ggplot(Yield_Performance,aes(x=GP,y=GY,colour = Env))+geom_point(aes(shape =factor(Env)))+
+  geom_text(label=Yield_Performance$Gen, nudge_x=.25,nudge_y =.25 )+theme_bw()
+#This code generates a scatter plot with GP on the x-axis, GY on the y-axis, and points colored and shaped by the Env variable. It also labels each point with the Gen column values and uses a clean theme for better visibility
+```
+```{r}
+ggplot(Yield_Performance,aes(x=GP,y=GY,colour = Env))+geom_point(aes(shape =factor(Env)))+
+  geom_text(label=Yield_Performance$Gen, nudge_x=.25,nudge_y =.25 )+
+  theme_dark()
+#This code creates a scatter plot with GP on the x-axis, GY on the y-axis, and points colored and shaped by the Env variable. It labels each point with the Gen column values and uses a dark theme for a visually impactful appearance.
+
+```
+```{r}
+ggplot(Yield_Performance,aes(x=GP,y=GY,colour = Env))+geom_point(aes(shape =factor(Env)))+
+  geom_text(label=Yield_Performance$Gen, nudge_x=.25,nudge_y =.25 )+
+  theme_classic()
+#This code generates a scatter plot with GP on the x-axis, GY on the y-axis, and points colored and shaped by the Env variable. It labels each point with the Gen column values and uses a classic theme for a clean and professional look.
+```
+
+
+
+
+# Bar chart
+```{r}
+ggplot(Yield_Performance,aes(x=Env,y=GY))+geom_bar(stat ="identity",position =position_dodge2())
+#This code generates a bar plot with Env on the x-axis and GY on the y-axis. Bars are placed side-by-side to facilitate comparison of GY values across different environments.
+```
+
+```{r}
+ggplot(Yield_Performance,aes(x=Env,y=GY))+geom_bar(stat ="identity")
+#This code generates a bar plot with Env on the x-axis and GY on the y-axis, showing the GY values for each environment as bar heights.
+```
+```{r}
+ggplot(Yield_Performance,aes(x=Env,y=GY,fill = Env))+geom_bar(stat ="identity",position =position_dodge2())
+#This code generates a bar plot with Env on the x-axis and GY on the y-axis, showing the GY values for each environment as bar heights. Bars are filled with different colors based on the Env variable and are placed side-by-side for easy comparison.
+```
+```{r}
+ggplot(Yield_Performance,aes(x=Env,y=GY,fill = Env))+geom_bar(stat ="identity",position =position_dodge2())+
+  xlab("Location")+ ylab("Grain Yield(t/ha)")+theme_classic()
+#This code generates a bar plot with Env on the x-axis, GY on the y-axis, and bars filled by the Env variable. The bars are placed side-by-side for easy comparison, and the axes are labeled "Location" and "Grain Yield(t/ha)." The plot uses a classic theme for a clean and professional look.
+```
+
+```{r}
+ggplot(Yield_Performance,aes(x=Env,y=GY,fill = Env))+geom_bar(stat ="identity")+
+  xlab("Location")+ ylab("Grain Yield(t/ha)")+theme_classic()
+#This code generates a bar plot with Env on the x-axis, GY on the y-axis, and bars filled by the Env variable. The axes are labeled "Location" and "Grain Yield(t/ha)," and the plot uses a classic theme for a clean and professional appearance
+
+```
+
+```{r}
+ggplot(Yield_Performance,aes(x=Env,y=GY,fill = Env))+scale_fill_manual(values=c("purple","blue","orange","brown","green"))+
+  geom_bar(stat ="identity")+
+  xlab("Location")+ ylab("Grain Yield(t/ha)")+theme_classic()
+#This code generates a bar plot with Env on the x-axis, GY on the y-axis, and bars filled with manually specified colors. The axes are labeled "Location" and "Grain Yield(t/ha)," and the plot uses a classic theme for a clean and professional look.
+```
+```{r}
+library(metan)
+# The metan package in R is a valuable tool for conducting meta-analyses and analyzing multi-environment trial data. It facilitates both fixed and random-effects meta-analyses, meta-regression, and provides robust visualization capabilities such as forest plots. Additionally, metan offers methods for assessing stability and performance across different environments, making it a comprehensive package for researchers working with multi-environment trials. For example, using metan, one can easily perform a meta-analysis on study data by specifying effect sizes and standard errors, and visualize the results in a clear, interpretable format.
+
+
+```
+
+```{r}
+inspect(Yield_Performance[4:9])
+# This Yield_Performance[4:9] is used to access rows 4 to 9 of the Yield_Performance data frame.The inspect function is part of a specific package to inspect or view this subset of data.
+
+```
+```{r}
+inspect(Yield_Performance[4:9],plot =T )
+#This command inspect(Yield_Performance[4:9], plot = T) suggests the use of an inspect function, likely from a specific package, to examine the subset of the Yield_Performance data frame containing rows 4 to 9. The plot = T argument indicates that the function should generate a plot based on this subset of data.
+```
+```{r}
+find_outliers(Yield_Performance$GY)
+#This command is use to  find_outliers(Yield_Performance$GY) function suggests the intention to identify outliers in the GY column of the Yield_Performance data frame.
+```
+```{r}
+find_outliers(Yield_Performance$GY,plots =T)
+#This command find_outliers(Yield_Performance$GY, plots = T) suggests the use of a function to identify outliers in the GY column of the Yield_Performance data frame and create visual plots to display them.
+```
+
